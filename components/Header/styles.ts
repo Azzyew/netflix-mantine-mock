@@ -4,10 +4,32 @@ export const useStyles = createStyles((theme) => ({
   wrapper: {
     display: 'flex',
     justifyContent: 'space-between',
+
+    [theme.fn.smallerThan('md')]: {
+      marginTop: 18,
+    },
   },
 
-  link: {
-    display: 'block',
+  dropdown: {
+    position: 'absolute',
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    padding: '5px 0px',
+    top: 68,
+    left: 0,
+    right: 0,
+    zIndex: 0,
+    borderTopRightRadius: 0,
+    borderTopLeftRadius: 0,
+    borderTopWidth: 0,
+    overflow: 'hidden',
+
+    [theme.fn.largerThan('md')]: {
+      display: 'none',
+    },
+  },
+
+  regularNav: {
     lineHeight: 1,
     borderRadius: theme.radius.sm,
     textDecoration: 'none',

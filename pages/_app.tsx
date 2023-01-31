@@ -39,7 +39,11 @@ export default function App({ Component, pageProps: { session, ...pageProps }, r
                   '#141414',
                   '#141517',
                   '#101113',
-                ]
+                ],
+                red: [
+                  '#E50914',
+                  '#BF0811'
+                ],
               },
               fontFamily: 'Martel Sans, sans-serif',
               fontSizes: {

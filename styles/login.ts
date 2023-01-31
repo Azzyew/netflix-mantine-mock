@@ -45,11 +45,11 @@ export const useStyles = createStyles((theme) => ({
   },
 
   signInButton: {
-    backgroundColor: '#E50914',
+    backgroundColor: theme.colors.red[1],
     marginTop: '2vh',
     
     '&:hover': {
-      backgroundColor: '#bf0811',
+      backgroundColor: theme.colors.red[2],
     },
   },
 }));

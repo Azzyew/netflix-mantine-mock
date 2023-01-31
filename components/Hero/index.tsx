@@ -1,5 +1,5 @@
-import { Container } from '@mantine/core'
-import { useStyles } from './styles'
+import { Container } from '@mantine/core';
+import { useStyles } from './styles';
 
 const Hero = () => {
   const { classes } = useStyles();
@@ -11,7 +11,7 @@ const Hero = () => {
         </div>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

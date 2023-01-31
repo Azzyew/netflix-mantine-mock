@@ -1,12 +1,22 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
-import Image from 'next/image';
-import { Button, Group, Header as MantineHeader, Input, Menu, useMantineTheme} from '@mantine/core';
+import {
+  Burger,
+  Button,
+  Group,
+  Header as MantineHeader,
+  Input,
+  MediaQuery,
+  Menu,
+  Paper,
+  Transition,
+  useMantineTheme
+} from '@mantine/core';
 import { AiOutlineBell, AiOutlineSearch } from 'react-icons/ai';
 import { IoIosArrowDown } from 'react-icons/io';
 import { HiLogout } from 'react-icons/hi';
 import { useStyles } from './styles';
 import { signOut } from 'next-auth/react';
-import { useRouter } from 'next/router';
 
 interface HeaderProps {
   username: string | null | undefined;
@@ -14,9 +24,9 @@ interface HeaderProps {
 
 const Header = ({username}: HeaderProps) => {
   const { classes } = useStyles();
-  const [showSearch, setShowSearch] = useState(false);
   const theme = useMantineTheme();
-  const router = useRouter();
+  const [showSearch, setShowSearch] = useState(false);
+  const [opened, setOpened] = useState(false);
 
   const links = [
     {name: 'Home', href: '/'},
@@ -30,28 +40,53 @@ const Header = ({username}: HeaderProps) => {
     !showSearch ? setShowSearch(true) : setShowSearch(false);
   };
 
-  const handleSignOut = async () => {
-    await signOut();
+  const handleSignOut = () => {
+    signOut();
   };
+
+  const navLinks = links.map((link) => (
+    <Menu.Target key={link.name}>
+      <a
+        className={classes.regularNav}
+        href={link.href}
+      >
+        {link.name}
+      </a>
+    </Menu.Target>
+  ));
 
   return (
     <MantineHeader height={68} className={classes.header}>
       <Group className={classes.wrapper}>
         <Group mb={4} mr={10}>
-          <Image src="/logo.png" alt="Netflix logo" height={68} width={130} />
-        
-          <Menu trigger="hover" exitTransitionDuration={0}>
-            {links.map((link) => (
-              <Menu.Target key={link.name}>
-                <a
-                  className={classes.link}
-                  href={link.href}
-                >
-                  {link.name}
-                </a>
-              </Menu.Target>
-            ))}
-          </Menu>
+          <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
+            {/* mantine UI doesn't support next/image for media query before v13*/}
+            <img src="/logo.png" alt="Netflix logo" height={68} width={130} />
+          </MediaQuery>
+          <MediaQuery largerThan="md" styles={{ display: 'none' }}>
+            <Burger
+              opened={opened}
+              onClick={() => setOpened((wasOpened) => !wasOpened)}
+              size="sm"
+              color={theme.colors.red[1]}
+              mr="xl"
+            />
+          </MediaQuery>
+          <Transition transition="pop-top-right" duration={200} mounted={opened}>
+            {(styles) => (
+              <Paper className={classes.dropdown} withBorder style={styles}>
+                <Menu trigger="hover" exitTransitionDuration={0}>
+                  {navLinks}
+                </Menu>
+              </Paper>
+            )}
+          </Transition>
+          
+          <MediaQuery smallerThan="md" styles={{ display: 'none' }}>
+            <Menu trigger="hover" exitTransitionDuration={0}>
+              {navLinks}
+            </Menu>
+          </MediaQuery>
         </Group>
 
         <Group spacing="xs">
