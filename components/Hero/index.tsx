@@ -8,6 +8,10 @@ const Hero = () => {
     <div className={classes.wrapper}>
       <Container>
         <div className={classes.inner}>
+          <p>After waking up in a morgue,
+            an orphaned teen discovers she now possesses superpowers
+            as the chosen Halo-Bearer for a secret sect of demon-hunting nuns.
+          </p>
         </div>
       </Container>
     </div>

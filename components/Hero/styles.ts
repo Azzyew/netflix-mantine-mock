@@ -2,9 +2,12 @@ import { createStyles } from '@mantine/core';
 
 export const useStyles = createStyles((theme) => ({
   wrapper: {
+    padding: 0,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundImage: 'url(/hero.jpg)',
+    height: '90vh',
+    width: '96vw',
   },
 
   inner: {
