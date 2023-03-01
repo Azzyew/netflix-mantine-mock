@@ -8,7 +8,9 @@ const Home = () => {
   
   return (
     <AppShell header={<Header username={session?.user?.name}/>}>
-      <Hero />
+      <>
+        <Hero />
+      </>
     </AppShell>
   );
 };
