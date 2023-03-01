@@ -1,25 +1,15 @@
 import { createStyles } from '@mantine/core';
 
 export const useStyles = createStyles((theme) => ({
-  wrapper: {
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundImage: 'url(/hero.jpg)',
-    height: '90vh',
-    width: '96vw',
-  },
+  hero: {
+    position: 'absolute',
+    width: '98%',
+    maxHeight: '88%',
+    objectFit: 'cover',
+    zIndex: -1,
 
-  title: {
-    color: theme.white,
-    fontWeight: 900,
-    lineHeight: 1.05,
-    maxWidth: 500,
-    fontSize: 48,
-
-    [theme.fn.smallerThan('md')]: {
-      maxWidth: '100%',
-      fontSize: 34,
-      lineHeight: 1.15,
+    [theme.fn.smallerThan('sm')]: {
+      width: '95%',
     },
   },
 
@@ -31,22 +21,42 @@ export const useStyles = createStyles((theme) => ({
     height: '75vh',
 
     [theme.fn.smallerThan('md')]: {
-      flexDirection: 'column',
+      height: '70vh',
+    },
+
+    [theme.fn.smallerThan('sm')]: {
+      height: '40vh',
+    },
+
+    [theme.fn.smallerThan(400)]: {
+      height: '36vh',
     },
   },
 
   description: {
-    margin: '0 0 0 -14vw !important',
+    margin: '0 0 0 -14vw',
     color: theme.white,
     fontWeight: 500,
     lineHeight: 1.2,
     maxWidth: 600,
     fontSize: 20,
+    zIndex: 1,
+
+    [theme.fn.smallerThan(1000)]: {
+      margin: '12vh 0 0 -1vw',
+    },
 
     [theme.fn.smallerThan('lg')]: {
+      margin: '12vh 0 0 -1vw',
+    },
+
+    [theme.fn.smallerThan('md')]: {
+      margin: '0',
+    },
+
+    [theme.fn.smallerThan('sm')]: {
       maxWidth: '100%',
-      margin: '10px 0 0 0',
-      fontSize: 14,
+      fontSize: 10,
       lineHeight: 1.15,
     },
   },
@@ -54,6 +64,10 @@ export const useStyles = createStyles((theme) => ({
   buttonWrapper: {
     margin: '10px 0 0 -14vw',
     flexDirection: 'row',
+
+    [theme.fn.smallerThan('lg')]: {
+      margin: '10px 0 0 -2vw',
+    },
 
     [theme.fn.smallerThan('md')]: {
       margin: '10px 0 0 0',
@@ -65,6 +79,20 @@ export const useStyles = createStyles((theme) => ({
     width: '120px',
     fontSize: '16px',
     color: 'black',
+
+    [theme.fn.smallerThan('sm')]: {
+      height: '25px',
+      width: '85px',
+      fontSize: '10px'
+    },
+  },
+
+  icons: {
+    fontSize: '20px',
+
+    [theme.fn.smallerThan('sm')]: {
+      fontSize: '10px'
+    },
   },
 
   infoButton: {
@@ -74,5 +102,12 @@ export const useStyles = createStyles((theme) => ({
     width: '160px',
     fontSize: '16px',
     color: 'white',
+
+
+    [theme.fn.smallerThan('sm')]: {
+      height: '25px',
+      width: '110px',
+      fontSize: '10px'
+    },
   },
 }));

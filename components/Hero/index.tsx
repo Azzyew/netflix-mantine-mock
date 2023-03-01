@@ -7,7 +7,8 @@ const Hero = () => {
   const { classes } = useStyles();
 
   return (
-    <div className={classes.wrapper}>
+    <>
+      <img src='hero.jpg' className={classes.hero}/>
       <Container>
         <div className={classes.inner}>
           <p className={classes.description}>After waking up in a morgue,
@@ -15,12 +16,12 @@ const Hero = () => {
             as the chosen Halo-Bearer for a secret sect of demon-hunting nuns.
           </p>
           <div className={classes.buttonWrapper}>
-            <Button className={classes.playButton} leftIcon={<FaPlay size={20}/>} variant="white">Watch</Button>
-            <Button className={classes.infoButton} leftIcon={<AiOutlineInfoCircle size={20}/>} variant="light">More info</Button>
+            <Button className={classes.playButton} leftIcon={<FaPlay className={classes.icons}/>} variant="white">Watch</Button>
+            <Button className={classes.infoButton} leftIcon={<AiOutlineInfoCircle className={classes.icons}/>} variant="light">More info</Button>
           </div>
         </div>
       </Container>
-    </div>
+    </>
   );
 };
 

@@ -44,6 +44,10 @@ export const useStyles = createStyles((theme) => ({
 
   header: {
     padding: '0px 50px 0px 50px',
+
+    [theme.fn.smallerThan('sm')]: {
+      padding: '0px 20px 0px 20px',
+    },
   },
 
   username: {
